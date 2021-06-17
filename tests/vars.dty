@@ -12,3 +12,10 @@ obj o = "abc";
 put(o);
 o = 123;
 put(o);
+
+boolean x = false;
+put(x);
+x = !x;
+put(x);
+x = !x;
+put(x);

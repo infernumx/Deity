@@ -291,10 +291,6 @@ class Parser(SlyParser):
     def literal(self, p):
         return LiteralNull
 
-    @_('BOOL')
-    def literal(self, p):
-        return p.BOOL
-
     # Helpers
 
     @_('ID')

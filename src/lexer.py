@@ -35,7 +35,6 @@ class Lexer(SlyLexer):
     ID['float'] = FLOAT_TYPE
     ID['void'] = NULL_TYPE
     ID['boolean'] = BOOL_TYPE
-    ID['bool'] = BOOL
     ID['null'] = NULL
     ID['true'] = TRUE
     ID['false'] = FALSE
