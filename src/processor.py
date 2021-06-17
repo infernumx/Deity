@@ -166,7 +166,7 @@ class Processor:
             params = parsed[2]
             body = parsed[3]
             self.env.update({parsed[1]: Function(
-                self, params[1], body, self.env)})
+                self, params[1], body, self.env, name=parsed[1])})
             return None
         elif action == 'id':
             # Retrieves identifier from environment

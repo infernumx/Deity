@@ -12,9 +12,13 @@ class Env(dict):
         raise UnboundLocalError("{} is undefined".format(name))
 
 class Function(object):
-    def __init__(self, process, params, body, env):
+    def __init__(self, process, params, body, env, name=None):
         self.process, self.params, self.body, self.env = process, params, body, env
         self.type = 'function'
+        self.name = name
+
+    def __str__(self):
+        return f"<Function '{self.name}' {hex(id(self))}>"
 
     def __call__(self, *args):
         params = []
