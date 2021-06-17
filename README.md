@@ -21,6 +21,7 @@
 * Multiplication: `a * b`
 * Division: `a / b`
 * Accessor: `a.b`
+* Pipe: `(a) | (b)` where `a` is an expression(s), and b is a function
 
 ## Types
 * obj (for unknown or flexible types)
@@ -45,6 +46,7 @@
 ```rust
 fn my_func(int param1, string param2) : return_type {
     // fn body
+    return value;
 }
 ```
 
