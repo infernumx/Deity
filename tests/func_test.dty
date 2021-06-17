@@ -1,4 +1,4 @@
-fn google() : null {
+fn google() : void {
     obj r = urlreq.get("https://www.google.com/");
     put("google.com request:", r.status_code); // 200
 }

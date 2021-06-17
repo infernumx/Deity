@@ -1,4 +1,1 @@
-string a = 'poop';
-float b = 123.0;
-
-put(a);
+put(true, false, null);

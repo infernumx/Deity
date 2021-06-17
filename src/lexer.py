@@ -33,7 +33,8 @@ class Lexer(SlyLexer):
     ID['int'] = INT_TYPE
     ID['string'] = STRING_TYPE
     ID['float'] = FLOAT_TYPE
-    ID['null'] = NULL_TYPE
+    ID['null'] = NULL
+    ID['void'] = NULL_TYPE
     ID['true'] = TRUE
     ID['false'] = FALSE
     ID['if'] = IF
