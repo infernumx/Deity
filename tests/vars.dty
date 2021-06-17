@@ -1,0 +1,14 @@
+string abc = "abc";
+put(abc);
+abc = "def";
+put(abc);
+
+int x = 123;
+put(x);
+x = 456;
+put(x);
+
+obj o = "abc";
+put(o);
+o = 123;
+put(o);

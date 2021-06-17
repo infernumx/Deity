@@ -7,8 +7,8 @@ class Lexer(SlyLexer):
               OR, AND,
               EQUALITY, INEQUALITY, GTHAN, LTHAN,
               TRUE, FALSE,
-              FLOAT, INT, STRING, NULL,
-              FLOAT_TYPE, INT_TYPE, STRING_TYPE, NULL_TYPE, OBJ_TYPE,
+              FLOAT, INT, STRING, NULL, BOOL,
+              FLOAT_TYPE, INT_TYPE, STRING_TYPE, BOOL_TYPE, NULL_TYPE, OBJ_TYPE,
               IF, ELSE, RETURN, FOR}
 
     ignore = ' \t'
@@ -33,8 +33,10 @@ class Lexer(SlyLexer):
     ID['int'] = INT_TYPE
     ID['string'] = STRING_TYPE
     ID['float'] = FLOAT_TYPE
-    ID['null'] = NULL
     ID['void'] = NULL_TYPE
+    ID['boolean'] = BOOL_TYPE
+    ID['bool'] = BOOL
+    ID['null'] = NULL
     ID['true'] = TRUE
     ID['false'] = FALSE
     ID['if'] = IF

@@ -11,7 +11,7 @@ class Parser(SlyParser):
         ('left', AND),
         ('left', EQUALITY, INEQUALITY),
         ('left', '+', '-'),
-        ('left', '*', '/'),
+        ('left', '*', '/', '%'),
         ('right', '!')
     )
 
@@ -167,6 +167,10 @@ class Parser(SlyParser):
     @_('OBJ_TYPE')
     def data_type(self, p):
         return object
+        
+    @_('BOOL_TYPE')
+    def data_type(self, p):
+        return bool
 
     # Expressions
 
@@ -212,6 +216,10 @@ class Parser(SlyParser):
     @_('expr "/" expr')
     def expr(self, p):
         return ('/', p.expr0, p.expr1)
+
+    @_('expr "%" expr')
+    def expr(self, p):
+        return ('%', p.expr0, p.expr1)
 
     @_('"!" expr')
     def expr(self, p):
@@ -282,6 +290,10 @@ class Parser(SlyParser):
     @_('NULL')
     def literal(self, p):
         return LiteralNull
+
+    @_('BOOL')
+    def literal(self, p):
+        return p.BOOL
 
     # Helpers
 

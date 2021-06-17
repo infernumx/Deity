@@ -51,7 +51,7 @@ class Processor:
 
         action = parsed[0]
 
-        if action in '+-*/':
+        if action in '+-*/%':
             return self.handle_math_op(action, parsed)
         elif action in ('or', 'and', 'equal', 'inequal', 'lthan', 'gthan'):
             return self.handle_comparison(action, parsed)
@@ -171,7 +171,7 @@ class Processor:
         elif action == 'id':
             # Retrieves identifier from environment
             var = self.env.find(parsed[1])
-            if not var:
+            if var is None:
                 raise NameError(f'Identifier \'{parsed[1]}\' not found.')
             if not isinstance(var, Value):
                 return var
@@ -232,3 +232,7 @@ class Processor:
         elif op == '/':
             a, b = evaluate_args(parsed[1:3])
             return a / b
+        elif op == '%':
+            a, b = evaluate_args(parsed[1:3])
+            return a % b
+

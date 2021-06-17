@@ -1,0 +1,5 @@
+fn x(float a, int b) : void {
+    put(a, b);
+}
+
+(5/2, 10) | (x);

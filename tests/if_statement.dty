@@ -1,0 +1,19 @@
+string a = "abc";
+
+if a == "abc" {
+    put("a is abc");
+}
+
+a = "def";
+
+if a == "abc" {
+    put("a is abc");
+}
+
+fn even_check(obj n) : boolean {
+    return n == 0;
+}
+
+if (6 % 2) | (even_check) {
+    put("even");
+}
