@@ -37,28 +37,28 @@
 ## Functions
 
 ##### Declaration
-```go
+```rust
 fn my_func(int param1, string param2) : return_type {
     // fn body
 }
 ```
 
 ##### Usage
-```go
+```rust
 my_func(123, 'abc');
 ```
 
 ## Variables
 
 ##### Declaration
-```go
+```rust
 string my_string = 'abc';
 string my_string = "abc";
 int my_int = 123;
 ```
 
 ##### Reassignment
-```go
+```rust
 my_string = 'def';
 my_string = "def";
 my_int = 456;
@@ -67,7 +67,7 @@ my_int = 456;
 ## Control Flow
 
 ##### If statement
-```go
+```rust
 string a = 'abc';
 
 if (a == 'abc') { // parentheses optional
