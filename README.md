@@ -29,6 +29,7 @@
 * int
 * float
 * null
+* boolean
 
 ### Constants
 * true
@@ -52,21 +53,21 @@ fn my_func(int param1, string param2) : return_type {
 
 ##### Usage
 ```rust
-my_func(123, 'abc');
+my_func(123, "abc");
 ```
 
 ## Variables
 
 ##### Declaration
 ```rust
-string my_string = 'abc';
 string my_string = "abc";
 int my_int = 123;
+boolean x = true;
+boolean y = false;
 ```
 
 ##### Reassignment
 ```rust
-my_string = 'def';
 my_string = "def";
 my_int = 456;
 ```
@@ -75,10 +76,10 @@ my_int = 456;
 
 ##### If statement
 ```rust
-string a = 'abc';
+string a = "abc";
 
-if (a == 'abc') { // parentheses optional
-    put('a is abc');
+if (a == "abc") { // parentheses optional
+    put("a is abc");
 }
 ```
 
