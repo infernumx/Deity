@@ -1,0 +1,25 @@
+put("======================\nMathematical Operators\n======================");
+put("[(1+1)*2/2] =>  ", (1+1)*2/2); // expected: 2.0
+put("[(30)*2*2/5] =>  ", (30)*2*2/5); // expected: 24.0
+put();
+
+put("========\nEquality\n========");
+put("[1 == 2] =>  ", 1 == 2); // expected: false
+put("[1 == 1] =>  ", 1 == 1); // expected: true
+put("[1 != 2] =>  ", 1 != 2); // expected: true
+put("[1 != 1] =>  ", 1 != 1); // expected: false
+put("[5 > 3]  =>  ", 5 > 3); // expected: true
+put("[3 > 5]  =>  ", 3 > 5); // expected: false
+put("[5 > 5]  =>  ", 5 > 5); // expected: false
+put("[5 < 3]  =>  ", 5 < 3); // expected: false
+put("[5 < 5]  =>  ", 5 < 5); // expected: false
+put("[3 < 5]  =>  ", 3 < 5); // expected: true
+put();
+
+put("=================\nLogical Operators\n=================");
+put("[true || false]            =>  ", true || false); // expected: true
+put("[false && 'abc' || 'xyz']  =>  ", false && "abc" || "xyz"); // expected: xyz
+put("[true && 'abc' || 'xyz']   =>  ", true && "abc" || "xyz"); // expected: abc
+put("[!true]                    =>  ", !true);  // expected: false
+put("[!false]                   =>  ", !false); // expected: true
+put();
