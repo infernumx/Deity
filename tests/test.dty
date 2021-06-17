@@ -1,4 +1,10 @@
-string a = "abc";
-string b = "abc";
+int x = 10;
+int y = 5;
 
-put(memaddr(a), memaddr(b), a == b, a === b);
+fn test(obj num) : int {
+    put(num);
+    put(num + 5);
+    return 123;
+}
+
+put((x/y) | (test));

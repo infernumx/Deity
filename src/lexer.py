@@ -9,7 +9,7 @@ class Lexer(SlyLexer):
               TRUE, FALSE,
               FLOAT, INT, STRING, NULL,
               FLOAT_TYPE, INT_TYPE, STRING_TYPE, NULL_TYPE, OBJ_TYPE,
-              IF, ELSE}
+              IF, ELSE, RETURN}
 
     ignore = ' \t'
     ignore_comment_slash = r'//.*'
@@ -40,6 +40,7 @@ class Lexer(SlyLexer):
     ID['if'] = IF
     ID['else'] = ELSE
     ID['fn'] = FN
+    ID['return'] = RETURN
 
     @_(r'\d+\.\d+')
     def FLOAT(self, t):

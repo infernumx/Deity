@@ -134,15 +134,15 @@ class Parser(SlyParser):
 
     @_('INT_TYPE')
     def data_type(self, p):
-        return 'int'
+        return int
 
     @_('STRING_TYPE')
     def data_type(self, p):
-        return 'str'
+        return str
 
     @_('FLOAT_TYPE')
     def data_type(self, p):
-        return 'float'
+        return float
 
     @_('NULL_TYPE')
     def data_type(self, p):
@@ -150,9 +150,13 @@ class Parser(SlyParser):
 
     @_('OBJ_TYPE')
     def data_type(self, p):
-        return 'object'
+        return object
 
     # Expressions
+
+    @_('RETURN expr')
+    def expr(self, p):
+        return ('return', p.expr)
 
     @_('literal')
     def expr(self, p):
@@ -206,6 +210,14 @@ class Parser(SlyParser):
     @_('expr AND expr')
     def expr(self, p):
         return ('and', p.expr0, p.expr1)
+
+    @_('"(" expr ")" "|" "(" ID ")"')
+    def expr(self, p):
+        return ('pipe', p.expr, p.ID)
+
+    @_('"(" args ")" "|" "(" ID ")"')
+    def expr(self, p):
+        return ('pipe', p.args, p.ID)
 
     @_('expr EQUALITY expr')
     def expr(self, p):

@@ -16,8 +16,8 @@ class Processor:
         self.depth = 0
         self.debug = debug
         self.lexer = lexer
-        self.types  = { 'int': int, 'float': float, 'str': str, 'null': LiteralNull}
-        self.rtypes = { int: 'int', float: 'float', str: 'str', LiteralNull: 'null'}
+        self.types  = { 'int': int, 'float': float, 'str': str, 'obj': object, 'null': LiteralNull}
+        self.rtypes = { int: 'int', float: 'float', str: 'str', object: 'obj', LiteralNull: 'null'}
 
     def run(self, tree=None, env={}):
         current_env = self.env
@@ -73,13 +73,29 @@ class Processor:
                 except TypeError:
                     res = self.evaluate(getattr(var, parsed[2]))
             return res
+        elif action == 'pipe':
+            if isinstance(parsed[1], list):
+                args = [self.evaluate(arg) for arg in parsed[1]]
+            else:
+                args = [self.evaluate(parsed[1])]
+            fn = self.env.find(parsed[2])
+            if not isinstance(fn, Function):
+                if type(fn) == type(lambda x: x):
+                    return fn(*args)
+            else:
+                return fn(*args)
+            return None
+        elif action == 'return':
+            expr = self.evaluate(parsed[1])
+            self.should_return = True
+            return expr
         elif action == 'var_define':
             # Var definition
             name = parsed[1]
             value = self.evaluate(parsed[2])
-            _type = parsed[3]
+            _type = self.rtypes[parsed[3]]
             eval_type = type(value).__name__
-            if _type != 'object' and eval_type != _type:
+            if _type != 'obj' and eval_type != _type:
                 raise TypeError(f"Expected type '{_type}' for variable '{name}', received '{eval_type}'")
                 return None
             self.env.update({name: Value(value, _type)})

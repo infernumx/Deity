@@ -19,8 +19,10 @@ class Function(object):
     def __call__(self, *args):
         params = []
         for i in range(len(self.params)):
-            if type(args[i]) != self.process.types[self.params[i][1]]:
-                raise TypeError("Expected type '{}' for param '{}', received '{}'.".format(self.params[i][1], self.params[i][0], self.process.rtypes[type(args[i])]))
+            _type = self.process.rtypes[type(args[i])]
+            expected_type = self.process.rtypes[self.params[i][1]]
+            if expected_type != 'obj' and _type != expected_type:
+                raise TypeError("Expected type '{}' for param '{}', received '{}'.".format(expected_type, self.params[i][0], _type))
             params.append(self.params[i][0])
         return self.process.run((self.body,), Env(params, args, self.env))
 
