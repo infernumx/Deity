@@ -146,7 +146,7 @@ class Parser(SlyParser):
 
     @_('NULL_TYPE')
     def data_type(self, p):
-        return None
+        return 'Null'
 
     @_('OBJ_TYPE')
     def data_type(self, p):
@@ -253,7 +253,7 @@ class Parser(SlyParser):
 
     @_('NULL')
     def literal(self, p):
-        return None
+        return LiteralNull
 
     # Helpers
 

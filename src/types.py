@@ -40,3 +40,12 @@ class Value(object):
 
     def get(self):
         return self.value
+
+class Null:
+    def __repr__(self):
+        return 'Null()'
+
+    def __str__(self):
+        return 'null'
+
+LiteralNull = Null()

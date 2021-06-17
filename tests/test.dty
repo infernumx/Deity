@@ -1,1 +1,3 @@
-put(true, false, null);
+void a = null;
+
+put(a == null);

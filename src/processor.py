@@ -16,8 +16,8 @@ class Processor:
         self.depth = 0
         self.debug = debug
         self.lexer = lexer
-        self.types  = { 'int': int, 'float': float, 'str': str }
-        self.rtypes = { int: 'int', float: 'float', str: 'str' }
+        self.types  = { 'int': int, 'float': float, 'str': str, 'null': LiteralNull}
+        self.rtypes = { int: 'int', float: 'float', str: 'str', LiteralNull: 'null'}
 
     def run(self, tree=None, env={}):
         current_env = self.env
