@@ -20,6 +20,7 @@
 * Subtraction: `a - b`
 * Multiplication: `a * b`
 * Division: `a / b`
+* Modulo: `a % b`
 * Accessor: `a.b`
 * Pipe: `(a) | (b)` where `a` is an expression(s), and `b` is a function
 
