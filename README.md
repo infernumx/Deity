@@ -21,7 +21,7 @@
 * Multiplication: `a * b`
 * Division: `a / b`
 * Accessor: `a.b`
-* Pipe: `(a) | (b)` where `a` is an expression(s), and b is a function
+* Pipe: `(a) | (b)` where `a` is an expression(s), and `b` is a function
 
 ## Types
 * obj (for unknown or flexible types)
