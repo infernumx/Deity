@@ -34,6 +34,10 @@
 * false
 * null
 
+### Standard Library
+* `put(args...)` -> Standard print function
+* `urlreq.get(url)` -> GET request to specified url
+
 ## Functions
 
 ##### Declaration
