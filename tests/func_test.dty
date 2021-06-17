@@ -3,4 +3,6 @@ fn google() : void {
     return r.status_code;
 }
 
-put("Status code from google.com ->", google());
+int status_code = google();
+
+put("Status code from google.com ->", status_code);

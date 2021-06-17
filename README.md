@@ -81,3 +81,10 @@ if (a == 'abc') { // parentheses optional
     put('a is abc');
 }
 ```
+
+##### For loop
+```rust
+for int i : (1, 10) {
+    put(i);
+}
+```

@@ -89,6 +89,18 @@ class Processor:
             expr = self.evaluate(parsed[1])
             self.should_return = True
             return expr
+        elif action == 'var_assign':
+            name = parsed[1]
+            _type = parsed[2]
+            _range = parsed[3][1]
+            self.env.update({name: Value(None, _type)})
+            self.evaluate(parsed[3])
+        elif action == 'for':
+            _range = range(*parsed[2][1])
+            for i in _range:
+                self.env.update({parsed[1]: Value(i, type(i))})
+                self.run((parsed[3],))
+            self.env.pop(parsed[1])
         elif action == 'var_define':
             # Var definition
             name = parsed[1]
