@@ -164,9 +164,15 @@ class Processor:
             return a and b
         elif op == 'equal':
             a, b = evaluate_args(parsed[1:3])
+            _op = parsed[3]
+            if _op == '===':
+                return a is b
             return a == b
         elif op == 'inequal':
             a, b = evaluate_args(parsed[1:3])
+            _op = parsed[3]
+            if _op == '!==':
+                return a is not b
             return a != b
         elif op == 'gthan':
             op = parsed[1]

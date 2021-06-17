@@ -209,11 +209,11 @@ class Parser(SlyParser):
 
     @_('expr EQUALITY expr')
     def expr(self, p):
-        return ('equal', p.expr0, p.expr1)
+        return ('equal', p.expr0, p.expr1, p.EQUALITY)
 
     @_('expr INEQUALITY expr')
     def expr(self, p):
-        return ('inequal', p.expr0, p.expr1)
+        return ('inequal', p.expr0, p.expr1, p.INEQUALITY)
 
     @_('expr GTHAN expr')
     def expr(self, p):

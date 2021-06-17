@@ -1,3 +1,4 @@
-void a = null;
+string a = "abc";
+string b = "abc";
 
-put(a == null);
+put(memaddr(a), memaddr(b), a == b, a === b);

@@ -17,6 +17,10 @@ class stdlib:
         args = [to_string(x)
                 for x in args]
         print(*args, **kwargs)
+
+    @staticmethod
+    def memaddr(v):
+        return hex(id(v))
     
     @staticmethod
     def urlreq(url):
@@ -26,6 +30,7 @@ class stdlib:
 
 _stdlib = {
     'put': stdlib.put,
+    'memaddr': stdlib.memaddr,
     'urlreq': {
         'get': stdlib.urlreq
     }

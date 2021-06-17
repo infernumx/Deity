@@ -37,6 +37,7 @@
 ### Standard Library
 * `put(args...)` -> Standard print function
 * `urlreq.get(url)` -> GET request to specified url
+* `memaddr(obj)` -> Retrieves memory address for obj
 
 ## Functions
 
