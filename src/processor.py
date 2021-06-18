@@ -217,6 +217,11 @@ class Processor:
                                       for arg in args]
         if op == '+':
             a, b = evaluate_args(parsed[1:3])
+            # Implicit str/int conversion
+            types = {(str, int): lambda x, y: x + str(y),
+                     (int, str): lambda x, y: str(x) + y}
+            if callback := types.get((type(a), type(b))):
+                return callback(a, b)
             return a + b
         elif op == '-':
             a, b = evaluate_args(parsed[1:3])

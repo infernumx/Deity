@@ -2,7 +2,6 @@ from sly import Lexer as SlyLexer
 
 
 class Lexer(SlyLexer):
-    # This is the set of tokens we are exporting to the Parser
     tokens = {SEP, ID, FN,
               OR, AND,
               EQUALITY, INEQUALITY, GTHAN, LTHAN,
@@ -46,17 +45,11 @@ class Lexer(SlyLexer):
 
     @_(r'\d+\.\d+')
     def FLOAT(self, t):
-        """
-        Parsing float numbers
-        """
         t.value = float(t.value)
         return t
 
     @_(r'\d+')
     def INT(self, t):
-        """
-        Parsing integers
-        """
         t.value = int(t.value)
         return t
 
@@ -71,15 +64,12 @@ class Lexer(SlyLexer):
 
     @_(r'''("[^"\\]*(\\.[^"\\]*)*"|'[^'\\]*(\\.[^'\\]*)*')''')
     def STRING(self, t):
+        print(t.value)
         t.value = self.remove_quotes(t.value)
-        t.value = t.value.replace(r"\n", "\n")
-        t.value = t.value.replace(r"\t", "\t")
-        t.value = t.value.replace(r"\\", "\\")
-        t.value = t.value.replace(r"\"", "\"")
-        t.value = t.value.replace(r"\'", "\'")
-        t.value = t.value.replace(r"\a", "\a")
-        t.value = t.value.replace(r"\b", "\b")
-        t.value = t.value.replace(r"\r", "\r")
-        t.value = t.value.replace(r"\t", "\t")
-        t.value = t.value.replace(r"\v", "\v")
+        print(t.value)
+        chars = ((r'\n', '\n'), (r'\t', '\t'), (r'\\', '\\'),
+                 (r'\"', '\"'), (r'\'', '\''), (r'\a', '\a'),
+                 (r'\b', '\b'), (r'\r', '\r'), (r'\v', '\v'))
+        for pair in chars:
+            t.value = t.value.replace(*pair)
         return t

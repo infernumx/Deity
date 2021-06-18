@@ -26,7 +26,9 @@ class Function(object):
             _type = self.process.rtypes[type(args[i])]
             expected_type = self.process.rtypes[self.params[i][1]]
             if expected_type != 'obj' and _type != expected_type:
-                raise TypeError("Expected type '{}' for param '{}', received '{}'.".format(expected_type, self.params[i][0], _type))
+                raise TypeError("Expected type '{}' for param '{}', received '{}'.".format(
+                    expected_type, self.params[i][0], _type)
+                )
             params.append(self.params[i][0])
         return self.process.run((self.body,), Env(params, args, self.env))
 
@@ -34,15 +36,6 @@ class Value(object):
     def __init__(self, value, val_type):
         self.value = value
         self.type = val_type
-
-    def __len__(self):
-        try:
-            return len(self.value)
-        except:
-            return 1
-
-    def __str__(self):
-        return "{}: {}".format(self.value, self.type)
 
     def get(self):
         return self.value
