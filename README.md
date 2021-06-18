@@ -86,12 +86,14 @@ string a = "abc";
 
 if (a == "abc") { // parentheses optional
     put("a is abc");
+} else if (a == "def") {
+    put("a is def");
 }
 ```
 
 ##### For loop
 ```rust
-for int i : (1, 10) {
+for int i : (1, 10) { // (1, 10, 1) (start, stop[, step=1])
     put(i);
 }
 ```
