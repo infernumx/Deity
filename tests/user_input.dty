@@ -1,0 +1,8 @@
+fn callable(string result) : boolean {
+    int _result = converter.to_int(result);
+    return _result > 10;
+}
+
+int inp = converter.to_int(input("Prompt: ", callable));
+
+put(inp * 5);

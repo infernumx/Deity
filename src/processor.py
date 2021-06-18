@@ -16,8 +16,8 @@ class Processor:
         self.depth = 0
         self.debug = debug
         self.lexer = lexer
-        self.types  = { 'int': int, 'float': float, 'str': str, 'obj': object, 'null': LiteralNull, 'bool': bool}
-        self.rtypes = { int: 'int', float: 'float', str: 'str', object: 'obj', LiteralNull: 'null', bool: 'bool'}
+        self.types  = { 'int': int, 'float': float, 'str': str, 'obj': object, 'NullType': NullType, 'null': LiteralNull, 'bool': bool}
+        self.rtypes = { int: 'int', float: 'float', str: 'str', object: 'obj', NullType: 'NullType', LiteralNull: 'null', bool: 'bool'}
 
     def run(self, tree=None, env={}):
         current_env = self.env
@@ -32,6 +32,7 @@ class Processor:
                 if self.depth == 0:
                     self.should_return = False
                 if self.should_return:
+                    self.should_return = False
                     return result
         else:
             for line in tree:
@@ -41,6 +42,7 @@ class Processor:
                 if self.depth == 0:
                     self.should_return = False
                 if self.should_return:
+                    self.should_return = False
                     return result
         self.env = current_env
         return result
@@ -111,25 +113,18 @@ class Processor:
                 raise TypeError(f"Expected type '{_type}' for variable '{name}', received '{eval_type}'")
                 return None
             self.env.update({name: Value(value, _type)})
-            if self.debug:
-                print('Environment', self.env)
         elif action == 'var_define_no_expr':
             # Var definition without an expression
             name = parsed[1]
             _type = parsed[2]
             self.env.update({name: Value(None, _type)})
-            if self.debug:
-                print('Environment', self.env)
         elif action == 'var_redefine':
             # Var redefinition
             name = parsed[1]
             if not self.env.find(name):
-                print(f'[Error]: Attempt to reassign variable {name} before assignment.')
                 return None
             value = parsed[2]
             self.env.update({name: self.evaluate(value)})
-            if self.debug:
-                print('Environment', self.env)
         elif action == 'call':
             # Function call
             if isinstance(parsed[1], tuple):

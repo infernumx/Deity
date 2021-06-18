@@ -4,10 +4,14 @@ if a == "abc" {
     put("a is abc");
 }
 
-a = "def";
+a = "ghi";
 
 if a == "abc" {
     put("a is abc");
+} else if a == "def" {
+    put("a is def");
+} else if a == "ghi" {
+    put("a is ghi");
 }
 
 fn even_check(obj n) : boolean {

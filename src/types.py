@@ -47,11 +47,11 @@ class Value(object):
     def get(self):
         return self.value
 
-class Null:
+class NullType(object):
     def __repr__(self):
         return 'Null()'
 
     def __str__(self):
         return 'null'
 
-LiteralNull = Null()
+LiteralNull = NullType()

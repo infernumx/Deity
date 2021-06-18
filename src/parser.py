@@ -162,7 +162,7 @@ class Parser(SlyParser):
 
     @_('NULL_TYPE')
     def data_type(self, p):
-        return 'Null'
+        return NullType
 
     @_('OBJ_TYPE')
     def data_type(self, p):
@@ -272,6 +272,10 @@ class Parser(SlyParser):
     @_('FALSE')
     def expr(self, p):
         return False
+
+    @_('NULL')
+    def expr(self, p):
+        return LiteralNull
 
     # Type Literals
 
