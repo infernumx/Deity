@@ -1,8 +1,0 @@
-fn google() : void {
-    obj r = urlreq.get("https://www.google.com/");
-    return r.status_code;
-}
-
-int status_code = google();
-
-put("Status code from google.com ->", status_code);
