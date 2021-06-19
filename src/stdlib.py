@@ -19,7 +19,7 @@ class stdlib:
         print(*args, **kwargs)
 
     @staticmethod
-    def conditional_input(prompt: str, condition: callable=None):
+    def conditional_input(prompt: str = '', condition: callable=None):
         '''Retries until a valid input is received'''
         try:
             user_input = input(prompt)
@@ -50,11 +50,6 @@ class stdlib:
     @staticmethod
     def memaddr(v):
         return hex(id(v))
-    
-    @staticmethod
-    def urlreq(url):
-        _r = requests.get(url)
-        return _r
 
 
 _stdlib = {
@@ -66,10 +61,7 @@ _stdlib = {
         'to_string': stdlib.to_str,
         'to_boolean': stdlib.to_bool
     },
-    'memaddr': stdlib.memaddr,
-    'urlreq': {
-        'get': stdlib.urlreq
-    }
+    'memaddr': stdlib.memaddr
 }
 
 std = Env()
