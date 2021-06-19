@@ -40,13 +40,15 @@
 
 ### Standard Library
 * `put(args...)` -> Standard print function
-* `urlreq.get(url)` -> GET request to specified url
 * `memaddr(obj)` -> Retrieves memory address for obj
 * `input(prompt[, callable])` -> Retrieves user input with an optional `callable` param to evaluate the validity of the result of user input, continues callable evaluates to true
 * `converter.to_integer(x)` -> Attempts to convert `x` to an integer
 * `converter.to_float(x)` -> Attempts to convert `x` to a float
 * `converter.to_string(x)` -> Converts `x` to a string
 * `converter.to_boolean(x)` -> Evaluates the truthiness of `x` and returns it
+* `str.lower(x)` -> Converts `x` to a string and makes it lowercase
+* `str.upper(x)` -> Converts `x` to a string and makes it uppercase
+* `str.capitalize(x)` -> Converts `x` to a string and capitalizes it
 
 ## Functions
 
