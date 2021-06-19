@@ -51,6 +51,17 @@ class stdlib:
     def memaddr(v):
         return hex(id(v))
 
+    @staticmethod
+    def str_to_lower(v):
+        return str(v).lower()
+
+    @staticmethod
+    def str_to_upper(v):
+        return str(v).upper()
+
+    @staticmethod
+    def str_capitalize(v):
+        return str(v).capitalize()
 
 _stdlib = {
     'put': stdlib.put,
@@ -60,6 +71,11 @@ _stdlib = {
         'to_float': stdlib.to_float,
         'to_string': stdlib.to_str,
         'to_boolean': stdlib.to_bool
+    },
+    'str': {
+        'lower': stdlib.str_to_lower,
+        'upper': stdlib.str_to_upper,
+        'capitalize': stdlib.str_capitalize
     },
     'memaddr': stdlib.memaddr
 }
