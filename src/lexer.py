@@ -8,7 +8,7 @@ class Lexer(SlyLexer):
               TRUE, FALSE,
               FLOAT, INT, STRING, NULL,
               FLOAT_TYPE, INT_TYPE, STRING_TYPE, BOOL_TYPE, NULL_TYPE, OBJ_TYPE,
-              IF, ELSE, RETURN, FOR}
+              IF, ELSE, RETURN, FOR, WHILE}
 
     ignore = ' \t'
     ignore_comment_slash = r'//.*'
@@ -42,6 +42,7 @@ class Lexer(SlyLexer):
     ID['fn'] = FN
     ID['return'] = RETURN
     ID['for'] = FOR
+    ID['while'] = WHILE
 
     @_(r'\d+\.\d+')
     def FLOAT(self, t):

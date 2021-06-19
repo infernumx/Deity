@@ -103,6 +103,10 @@ class Processor:
                 self.env.update({parsed[1]: Value(i, type(i))})
                 self.run((parsed[3],))
             self.env.pop(parsed[1])
+        elif action == 'while':
+            expr = parsed[1]
+            while self.evaluate(expr):
+                self.run((parsed[2],))
         elif action == 'var_define':
             # Var definition
             name = parsed[1]

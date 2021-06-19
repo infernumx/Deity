@@ -82,6 +82,10 @@ class Parser(SlyParser):
     def statement(self, p):
         return p.for_loop
 
+    @_('while_loop')
+    def statement(self, p):
+        return p.while_loop
+
     @_('var_assign')
     def statement(self, p):
         return p.var_assign
@@ -93,6 +97,10 @@ class Parser(SlyParser):
     @_('FOR var_assign ":" "(" args ")" block')
     def for_loop(self, p):
         return (*p.var_assign, ('for', p.var_assign[1], ('args', p.args), ('block', p.block)))
+
+    @_('WHILE expr block')
+    def while_loop(self, p):
+        return ('while', p.expr, ('block', p.block))
 
     # Function declaration
 
