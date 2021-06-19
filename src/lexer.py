@@ -6,7 +6,7 @@ class Lexer(SlyLexer):
               OR, AND,
               EQUALITY, INEQUALITY, GTHAN, LTHAN,
               TRUE, FALSE,
-              FLOAT, INT, STRING, NULL, BOOL,
+              FLOAT, INT, STRING, NULL,
               FLOAT_TYPE, INT_TYPE, STRING_TYPE, BOOL_TYPE, NULL_TYPE, OBJ_TYPE,
               IF, ELSE, RETURN, FOR}
 
@@ -64,9 +64,7 @@ class Lexer(SlyLexer):
 
     @_(r'''("[^"\\]*(\\.[^"\\]*)*"|'[^'\\]*(\\.[^'\\]*)*')''')
     def STRING(self, t):
-        print(t.value)
         t.value = self.remove_quotes(t.value)
-        print(t.value)
         chars = ((r'\n', '\n'), (r'\t', '\t'), (r'\\', '\\'),
                  (r'\"', '\"'), (r'\'', '\''), (r'\a', '\a'),
                  (r'\b', '\b'), (r'\r', '\r'), (r'\v', '\v'))
