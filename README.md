@@ -98,3 +98,13 @@ for int i : (1, 10) { // (1, 10, 1) (start, stop[, step=1])
     put(i);
 }
 ```
+
+##### While loop
+```rust
+int i = 0;
+
+while (i < 30) {
+    put(i);
+    i = i + 1;
+}
+```
