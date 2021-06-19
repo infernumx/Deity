@@ -5,6 +5,7 @@
 ## Usage
 * Windows: `python deity.py file_path <'debug'>`
 * Linux: `./deity.py file_path <'debug'>` or `python3 deity.py file_path <'debug'>`
+* Run all tests: Replace file_path with `runall`
 
 ## Operators
 * Less Than: `a < b`
