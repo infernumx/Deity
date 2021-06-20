@@ -78,6 +78,10 @@ class Parser(SlyParser):
     def if_statement(self, p):
         return ('if', ('condition', p.expr), ('block', p.block), None)
 
+    @_('break_loop SEP')
+    def statement(self, p):
+        return p.break_loop
+
     @_('for_loop')
     def statement(self, p):
         return p.for_loop
@@ -93,6 +97,10 @@ class Parser(SlyParser):
     @_('data_type var')
     def var_assign(self, p):
         return ('var_assign', p.var, p.data_type)
+
+    @_('BREAK')
+    def break_loop(self, p):
+        return ('break',)
 
     @_('FOR var_assign ":" "(" args ")" block')
     def for_loop(self, p):

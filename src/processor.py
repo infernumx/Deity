@@ -99,14 +99,21 @@ class Processor:
             self.evaluate(parsed[3])
         elif action == 'for':
             _range = range(*parsed[2][1])
+            self.env.update({'__break_flag__': Value(False, bool)})
             for i in _range:
+                if self.should_break():
+                    break
                 self.env.update({parsed[1]: Value(i, type(i))})
                 self.run((parsed[3],))
             self.env.pop(parsed[1])
         elif action == 'while':
             expr = parsed[1]
-            while self.evaluate(expr):
+            self.env.update({'__break_flag__': Value(False, bool)})
+            while self.evaluate(expr) and not self.should_break():
                 self.run((parsed[2],))
+        elif action == 'break':
+            var = self.env.find('__break_flag__')
+            var.value = True
         elif action == 'var_define':
             # Var definition
             name = parsed[1]
@@ -240,3 +247,9 @@ class Processor:
             a, b = evaluate_args(parsed[1:3])
             return a % b
 
+    def should_break(self):
+        try:
+            var = self.env.find('__break_flag__')
+            return var.get()
+        except:
+            return False
